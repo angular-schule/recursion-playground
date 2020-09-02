@@ -15,7 +15,7 @@ export class AppComponent implements OnInit {
   constructor(private ds: DataService) {}
 
   ngOnInit(): void {
-    this.nextPage$ = new Subject<number>();
+    this.nextPage$ = new Subject<number>(); // triggered by buttons in the UI
 
     // load one single page, with a subject triggered by buttons
     const singlePagesWithSubject$ = this.nextPage$.pipe(
@@ -39,7 +39,7 @@ export class AppComponent implements OnInit {
     //////////////////
 
     /* simple example with expand */
-    const simpleExpand$ = of(1,2).pipe(
+    const simpleExpand$ = of(1, 2).pipe(
       expand(e => {
         console.log('expand input:', e);
         if (e === 1) {

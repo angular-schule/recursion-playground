@@ -1,12 +1,6 @@
-export interface User {
+export interface Repo {
   id: number;
-  firstName: string;
-  lastName: string;
-  email: string;
-}
-
-export interface PagedAPIResponse<T> {
-  page: number;
-  nextPage?: number;
-  data: T[];
+  html_url: string;
+  name: string;
+  description: string;
 }

@@ -478,7 +478,7 @@ export const magier: Magier[] = [
   },
   {
     id: 93,
-    name: 'Penn &amp; Teller',
+    name: 'Penn & Teller',
     description: '* 1955 oder 1948'
   },
   {

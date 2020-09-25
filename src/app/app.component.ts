@@ -78,7 +78,7 @@ export class AppComponent implements OnInit {
     // this.repos$.subscribe(console.table);
     // this.repos2$.subscribe(console.table);
 
-    this.recursionWithSubject$.subscribe(({ data, page }) => {
+    this.singlePagesWithSubject$.subscribe(({ data, page }) => {
       this.output = data;
       this.currentPage = page;
     });

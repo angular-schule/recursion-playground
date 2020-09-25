@@ -95,7 +95,7 @@ export const magicians = [
   'Albin Neumann',
   'Natias Neutert',
   'Okito',
-  'Penn &amp; Teller',
+  'Penn & Teller',
   'Jürgen Peter (Zauberkünstler)',
   'Peter Helten, der Zauberer mit der Tasche',
   'Philadelphia',
@@ -141,8 +141,7 @@ export const magicians = [
   'Wittus Witt',
   'Aloys Christof Wilsmann',
   'Florian Zimmer',
-  'Jochen Zmeck',
-  'Society of American Magicians Hall of Fame'
+  'Jochen Zmeck'
   //#endregion
 ];
 

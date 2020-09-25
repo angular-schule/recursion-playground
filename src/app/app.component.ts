@@ -4,6 +4,7 @@ import { GithubService } from './github.service';
 
 import { Subject, of, EMPTY } from 'rxjs';
 import { concatMap, tap, expand, reduce } from 'rxjs/operators';
+import { Magier } from './types';
 
 @Component({
   selector: 'app-root',
@@ -13,6 +14,9 @@ import { concatMap, tap, expand, reduce } from 'rxjs/operators';
 export class AppComponent implements OnInit {
 
   nextPage$ = new Subject<number>(); // triggered by buttons in the UI
+
+  output: Magier[] = [];
+  currentPage = 0;
 
   // load one single page, with a subject triggered by buttons
   singlePagesWithSubject$ = this.nextPage$.pipe(
@@ -72,6 +76,11 @@ export class AppComponent implements OnInit {
     // this.simpleExpand$.subscribe(console.table);
     // this.dataFetchedWithExpand$.subscribe(console.table);
     // this.repos$.subscribe(console.table);
-    this.repos2$.subscribe(console.table);
+    // this.repos2$.subscribe(console.table);
+
+    this.recursionWithSubject$.subscribe(({ data, page }) => {
+      this.output = data;
+      this.currentPage = page;
+    });
   }
 }

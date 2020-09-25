@@ -16,7 +16,9 @@ export class GithubService {
   constructor(private http: HttpClient) { }
 
   getData(page: number = 1): Observable<{ data: Repo[], page: number }> {
-    return this.http.get<Repo[]>(`https://api.github.com/users/${this.user}/repos?page=${page}&per_page=${this.itemsPerPage}`, {
+    return this.http.get<Repo[]>(`https://api.github.com/users/${this.user}/repos?page=${page}`
+                               + `&per_page=${this.itemsPerPage}?&direction=desc&sort=created`,
+    {
       headers: {
         Authorization: 'token fe91248f8a1e7be14' + '55147962bde2225e73e7137'
       }

@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
+import { delay } from 'rxjs/operators';
 import { Magier } from './types';
 
 /*
@@ -726,6 +727,6 @@ export class MagischerService {
     const endIndex = startIndex + this.itemsPerPage;
     const data = magier.slice(startIndex, endIndex);
 
-    return of({ data, page });
+    return of({ data, page }).pipe(delay(1000));
   }
 }

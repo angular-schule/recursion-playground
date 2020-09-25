@@ -1,6 +1,43 @@
-<h3>Trigger <code>nextPage$</code> subject</h3>
+<div class="container">
+  <h1>
+    <img width="120" src="assets/angular.png" alt="Angular Logo" >
+    Rekursion!
+  </h1>
 
-<button
-  *ngFor="let i of [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]"
-  (click)="nextPage$.next(i)"
->Page {{ i }}</button>
+  <div class="content">
+
+    <h6>Trigger <code>nextPage$</code> subject:</h6>
+    <button
+      class="btn"
+      [ngClass]="{
+        'btn-primary': currentPage === i ,
+        'btn-secondary': currentPage !== i
+      }"
+      *ngFor="let i of [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]"
+
+      (click)="nextPage$.next(i)"
+    >Page {{ i }}</button>
+
+    <!-- Seite:  {{ nextPage$ | async }} -->
+    <table class="mt-5 table table-striped" *ngIf="output.length">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Name</th>
+          <th scope="col">Beschreibung</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let o of output">
+          <th scope="row">{{ o.id }}</th>
+          <td>{{ o.name }}</td>
+          <td>{{ o.description }}</td>
+        </tr>
+      </tbody>
+    </table>
+
+
+
+
+  </div>
+</div>

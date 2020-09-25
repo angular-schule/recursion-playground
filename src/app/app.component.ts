@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FakeDataService } from './fake-data.service';
-import { RealDataService } from './real-data.service';
+import { MagicansService } from './magicians.service';
+import { GithubService } from './github.service';
 
 import { Subject, of, EMPTY } from 'rxjs';
 import { concatMap, tap, expand, reduce } from 'rxjs/operators';
@@ -30,7 +30,7 @@ export class AppComponent implements OnInit {
   );
 
   // simple example with expand
-  simpleExpand$ = of(1).pipe(
+  simpleExpand$ = this.nextPage$.pipe(
     expand(e => {
       console.log('expand input:', e);
       return (e < 10) ? of(e + 1) : EMPTY;
@@ -52,19 +52,18 @@ export class AppComponent implements OnInit {
   );
 
   // real data: fetch all GitHub repos for a user
-  user = 'angular-schule';
-
-  repos$ = this.ds2.getData(this.user, 1).pipe(
-    expand(({ data, page }) =>  data.length ? this.ds2.getData(this.user, page + 1) : EMPTY),
+  repos$ = this.ds2.getData(1).pipe(
+    expand(({ data, page }) =>  data.length ? this.ds2.getData(page + 1) : EMPTY),
     reduce((acc, res) => [...acc, ...res.data], []),
   );
 
-  repos2$ = this.ds2.getData(this.user, 1).pipe(
-    expand(({ page }) => this.ds2.getData2(this.user, page + 1)),
+  // real data: fetch all GitHub repos for a user + service returns EMPTY
+  repos2$ = of({ page: 0, data: [] }).pipe(
+    expand(({ page }) => this.ds2.getData2(page + 1)),
     reduce((acc, res) => [...acc, ...res.data], []),
   );
 
-  constructor(private ds: FakeDataService, private ds2: RealDataService) {}
+  constructor(private ds: MagicansService, private ds2: GithubService) {}
 
   ngOnInit(): void {
 
@@ -72,7 +71,7 @@ export class AppComponent implements OnInit {
     // this.recursionWithSubject$.subscribe(result => console.table(result.data));
     // this.simpleExpand$.subscribe(console.table);
     // this.dataFetchedWithExpand$.subscribe(console.table);
-    // this.repos$.subscribe(console.table);
+    this.repos$.subscribe(console.table);
     this.repos2$.subscribe(console.table);
   }
 }

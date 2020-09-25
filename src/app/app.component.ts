@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MagicansService } from './magicians.service';
+import { MagischerService } from './magischer.service';
 import { GithubService } from './github.service';
 
 import { Subject, of, EMPTY } from 'rxjs';
@@ -63,7 +63,7 @@ export class AppComponent implements OnInit {
     reduce((acc, res) => [...acc, ...res.data], []),
   );
 
-  constructor(private ds: MagicansService, private ds2: GithubService) {}
+  constructor(private ds: MagischerService, private ds2: GithubService) {}
 
   ngOnInit(): void {
 
@@ -71,7 +71,7 @@ export class AppComponent implements OnInit {
     // this.recursionWithSubject$.subscribe(result => console.table(result.data));
     // this.simpleExpand$.subscribe(console.table);
     // this.dataFetchedWithExpand$.subscribe(console.table);
-    this.repos$.subscribe(console.table);
+    // this.repos$.subscribe(console.table);
     this.repos2$.subscribe(console.table);
   }
 }

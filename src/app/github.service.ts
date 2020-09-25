@@ -11,7 +11,7 @@ import { Repo } from './types';
 export class GithubService {
 
   private itemsPerPage = 10;
-  private user = 'angular-schule';
+  private  user = 'angular-schule';
 
   constructor(private http: HttpClient) { }
 
@@ -22,14 +22,13 @@ export class GithubService {
       }
     }).pipe(
       map(data => ({
-        data: data.map(({ name, description }) => ({ name, description })),
+        data: data.map(({ id, name, description }) => ({ id, name, description })),
         page
       }))
     );
   }
 
   getData2(page: number = 1): Observable<{ data: Repo[], page: number }> {
-
     return this.getData(page)
       .pipe(
         mergeMap(result => result.data.length ? of(result) : EMPTY)

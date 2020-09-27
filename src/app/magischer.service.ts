@@ -722,7 +722,7 @@ export const magier: Magier[] = [
 export class MagischerService {
   private itemsPerPage = 10;
 
-  getData(page: number): Observable<{ data: Magier[], page: number }> {
+  getData(page: number = 1): Observable<{ data: Magier[], page: number }> {
     const startIndex = (page - 1) * this.itemsPerPage;
     const endIndex = startIndex + this.itemsPerPage;
     const data = magier.slice(startIndex, endIndex);

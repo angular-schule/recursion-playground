@@ -4,7 +4,7 @@ import { MagischerService } from './magischer.service';
 import { GithubService } from './github.service';
 
 import { Subject, of, EMPTY } from 'rxjs';
-import { concatMap, tap, expand, reduce } from 'rxjs/operators';
+import { mergeMap, concatMap, tap, expand, reduce, scan, map, delay, mergeAll,  } from 'rxjs/operators';
 import { Magier } from './types';
 
 @Component({

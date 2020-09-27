@@ -18,8 +18,12 @@
       (click)="nextPage$.next(i)"
     >Page {{ i }}</button>
 
-    <!-- Seite:  {{ nextPage$ | async }} -->
-    <table class="mt-5 table table-striped" *ngIf="output.length">
+    <h2 class="mt-5" [hidden]="!currentPage">
+      Page {{ currentPage }}
+      <span class="float-right badge badge-secondary">{{ output.length }} Items</span>
+    </h2>
+
+    <table class="table table-striped" *ngIf="output.length">
       <thead>
         <tr>
           <th scope="col" class="w-25">#</th>

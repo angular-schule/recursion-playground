@@ -18,7 +18,7 @@ export class AppComponent implements OnInit {
   output: Magier[] = [];
   currentPage = 0;
 
-  constructor(private ms: MagischerService, private gs: GithubService) {}
+  constructor(private ms: MagischerService) {}
 
   ngOnInit(): void {
 

@@ -1,4 +1,3 @@
-#r
 import { Component, OnInit } from '@angular/core';
 import { MagischerService } from './magischer.service';
 import { GithubService } from './github.service';
